@@ -19,7 +19,7 @@ using (FitnessAppContext dbContext = new FitnessAppContext())
         // Create a new user
         var newUser = new User
         {
-            UserName = "JerryFeely",
+            UserName = "JerryFeely", 
             RunActivities = new List<RunActivity>
             {
                 new RunActivity { Name = "Morning Run", Distance = 5.0 },

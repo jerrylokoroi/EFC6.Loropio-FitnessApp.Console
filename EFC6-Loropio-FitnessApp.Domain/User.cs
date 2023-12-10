@@ -14,4 +14,4 @@ namespace EFC6_Loropio_FitnessApp.Domain
         // Navigation property for RunActivities
         public List<RunActivity> RunActivities { get; set; }
     }
-}
+} 

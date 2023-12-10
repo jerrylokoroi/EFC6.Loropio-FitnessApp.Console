@@ -16,5 +16,5 @@ namespace EFC6.Loropio_FitnessApp.Data
                 );
 
         }
-    }
+    } 
 }
