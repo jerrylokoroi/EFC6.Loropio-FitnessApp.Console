@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC6.Loropio-FitnessApp", "EFC6.Loropio-FitnessApp\EFC6.Loropio-FitnessApp.csproj", "{03A4D944-AFFD-4EEB-9F41-9C4279DBCDBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC6.Loropio-FitnessApp.Console", "EFC6.Loropio-FitnessApp\EFC6.Loropio-FitnessApp.Console.csproj", "{03A4D944-AFFD-4EEB-9F41-9C4279DBCDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC6.Loropio-FitnessApp.Data", "EFC6.Loropio-FitnessApp.Data\EFC6.Loropio-FitnessApp.Data.csproj", "{330A5168-7B63-44F6-9358-1000A7CA8446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC6-Loropio-FitnessApp.Domain", "EFC6-Loropio-FitnessApp.Domain\EFC6-Loropio-FitnessApp.Domain.csproj", "{224FD8EB-58BC-4E03-A65F-A38009D50C65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{03A4D944-AFFD-4EEB-9F41-9C4279DBCDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A4D944-AFFD-4EEB-9F41-9C4279DBCDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A4D944-AFFD-4EEB-9F41-9C4279DBCDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330A5168-7B63-44F6-9358-1000A7CA8446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330A5168-7B63-44F6-9358-1000A7CA8446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330A5168-7B63-44F6-9358-1000A7CA8446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330A5168-7B63-44F6-9358-1000A7CA8446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224FD8EB-58BC-4E03-A65F-A38009D50C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224FD8EB-58BC-4E03-A65F-A38009D50C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224FD8EB-58BC-4E03-A65F-A38009D50C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224FD8EB-58BC-4E03-A65F-A38009D50C65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
