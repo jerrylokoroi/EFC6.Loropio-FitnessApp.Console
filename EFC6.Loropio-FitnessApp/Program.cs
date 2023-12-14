@@ -11,7 +11,7 @@ using (FitnessAppContext dbContext = new FitnessAppContext())
     DeleteExistingData(dbContext);
 
     // Add Users and RunActivities
-    AddUsersAndRunActivities(dbContext);
+    AddMultipleUsersWithActivities(dbContext, 15, 2);
 
     // Display Users with their RunActivities
     DisplayUsersWithActivities(dbContext);
@@ -28,7 +28,7 @@ static void DeleteExistingData(FitnessAppContext dbContext)
 }
 
 
-static void AddUsersAndRunActivities(FitnessAppContext dbContext)
+/*static void AddUsersAndRunActivities(FitnessAppContext dbContext)
 {
     // Add User 1 with RunActivities
     var user1 = AddUser(dbContext, "JerryFeely");
@@ -43,6 +43,45 @@ static void AddUsersAndRunActivities(FitnessAppContext dbContext)
     dbContext.SaveChanges();
 
     Console.WriteLine("Users and RunActivities added successfully!");
+}*/
+
+
+static void AddMultipleUsersWithActivities(FitnessAppContext dbContext, int userCount, int activitiesPerUser)
+{
+
+    var Names = new List<string>
+        {
+            "Jerry Ekuwam",
+            "Micheal Philip",
+            "Faith Dion",
+            "John Kirk",
+            "Harrison Gray",
+            "Bobby Johnson",
+            "John Smith",
+            "Morgan Freeman",
+            "Lucy Filley",
+            "Adolphe Nkoranyi",
+            "Jonas Blue",
+            "Alex Bayern",
+            "John Doe",
+            "Alice Smith",
+            "Bob Johnson",
+        };
+
+    foreach (var Name in Names)
+    {
+        var user = AddUser(dbContext, Name);
+
+        // Add RunActivities for each user as needed
+        var distance = (double)new Random().NextDouble() * 10; // Random distance between 0 and 10 km
+
+        AddRunActivity(dbContext, user, "Morning Run", distance);
+        AddRunActivity(dbContext, user, "Evening Jog", distance);
+    }
+
+    dbContext.SaveChanges();
+
+    Console.WriteLine($"Added {userCount} Users with at least {activitiesPerUser} RunActivities each.");
 }
 
 
@@ -73,26 +112,6 @@ static void AddRunActivity(FitnessAppContext dbContext, User user, string name, 
     user.RunActivities.Add(newRunActivity);
     dbContext.RunActivities.Add(newRunActivity);
 }
-
-
-/*static void CreateUserWithActivities(FitnessAppContext dbContext)
-    {
-        // Create a new user
-        var newUser = new User
-        {
-            UserName = "JerryFeely", 
-            RunActivities = new List<RunActivity>
-            {
-                new RunActivity { Name = "Morning Run", Distance = 5.0 },
-                new RunActivity { Name = "Evening Jog", Distance = 3.5 }
-            }
-        };
-
-        dbContext.users.Add(newUser);
-        dbContext.SaveChanges();
-
-        Console.WriteLine("User created successfully with assigned RunActivities!");
-    }*/
 
 static void DisplayUsersWithActivities(FitnessAppContext dbContext)
     {
