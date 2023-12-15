@@ -14,7 +14,7 @@ using (FitnessAppContext dbContext = new FitnessAppContext())
     AddMultipleUsersWithActivities(dbContext, 15, 2);
 
     // Display Users with their RunActivities
-    DisplayUsersWithActivities(dbContext);
+    DisplayUsersWithActivities(dbContext, pageSize: 5, pageNumber: 1);
 
     // Filter Users based on specific criteria
     FilterUsersByName(dbContext, "Jerry"); // Example: Filter users with LastName containing "Doe"
@@ -116,23 +116,26 @@ static void AddRunActivity(FitnessAppContext dbContext, User user, string name, 
     dbContext.RunActivities.Add(newRunActivity);
 }
 
-static void DisplayUsersWithActivities(FitnessAppContext dbContext)
-    {
-        var usersWithActivities = dbContext.users
-            .Include(user => user.RunActivities)
-            .ToList();
+static void DisplayUsersWithActivities(FitnessAppContext dbContext, int pageSize, int pageNumber)
+{
+    var usersWithActivities = dbContext.users
+        .Include(user => user.RunActivities)
+        .OrderBy(user => user.UserId) // Order by UserId for consistent pagination
+        .Skip((pageNumber - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
 
-        Console.WriteLine("List of Users with RunActivities:");
-        foreach (var user in usersWithActivities)
+    Console.WriteLine($"Page {pageNumber} of Users with RunActivities (Page Size: {pageSize}):");
+    foreach (var user in usersWithActivities)
+    {
+        Console.WriteLine($"User ID: {user.UserId}, Name: {user.UserName}");
+        foreach (var runActivity in user.RunActivities)
         {
-            Console.WriteLine($"User ID: {user.UserId}, Name: {user.UserName}");
-            foreach (var runActivity in user.RunActivities)
-            {
-                Console.WriteLine($"  RunActivity ID: {runActivity.Id}, Distance: {runActivity.Distance} km");
-            }
-            Console.WriteLine();
+            Console.WriteLine($"  RunActivity ID: {runActivity.Id}, Distance: {runActivity.Distance} km");
         }
+        Console.WriteLine();
     }
+}
 
 
 static void FilterUsersByName(FitnessAppContext dbContext, string filter)
