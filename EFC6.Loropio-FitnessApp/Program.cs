@@ -15,6 +15,9 @@ using (FitnessAppContext dbContext = new FitnessAppContext())
 
     // Display Users with their RunActivities
     DisplayUsersWithActivities(dbContext);
+
+    // Filter Users based on specific criteria
+    FilterUsersByName(dbContext, "Jerry"); // Example: Filter users with LastName containing "Doe"
 }
 
 
@@ -130,6 +133,26 @@ static void DisplayUsersWithActivities(FitnessAppContext dbContext)
             Console.WriteLine();
         }
     }
+
+
+static void FilterUsersByName(FitnessAppContext dbContext, string filter)
+{
+    var filteredUsers = dbContext.users
+        .Include(user => user.RunActivities)
+        .Where(user => user.UserName.Contains(filter) || user.UserName.Contains(filter))
+        .ToList();
+
+    Console.WriteLine($"Filtered Users with LastName or FirstName containing '{filter}':");
+    foreach (var user in filteredUsers)
+    {
+        Console.WriteLine($"User ID: {user.UserId}, Name: {user.UserName}");
+        foreach (var runActivity in user.RunActivities)
+        {
+            Console.WriteLine($"  RunActivity ID: {runActivity.Id}, Distance: {runActivity.Distance} km");
+        }
+        Console.WriteLine();
+    }
+}
 
 
 
